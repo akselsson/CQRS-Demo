@@ -16,5 +16,10 @@ namespace CQRSCode.ReadModel
         {
             return InMemoryDatabase.Details[id];
         }
+
+        public ShoppingCartDTO GetShoppingCart(Guid id)
+        {
+            return InMemoryDatabase.ShoppingCart[id];
+        }
     }
 }

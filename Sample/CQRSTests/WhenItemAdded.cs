@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using CQRSlite;
-using CQRSlite.Commanding;
-using CQRSlite.Domain;
+using CQRSCode.CommandHandlers;
+using CQRSCode.Commands;
 using CQRSlite.Eventing;
 using CQRSlite.Extensions.TestHelpers;
 using NUnit.Framework;
@@ -79,87 +78,6 @@ namespace CQRSTests
         public void should_apply_free_shipping()
         {
             Assert.IsInstanceOf<FreeShippingApplied>(PublishedEvents.ElementAt(1));
-        }
-    }
-
-    public class ShoppingCartCreated : Event
-    {
-
-        public ShoppingCartCreated(Guid id)
-        {
-            Id = id;
-        }
-    }
-
-    public class FreeShippingApplied : Event
-    {
-        public FreeShippingApplied(Guid id)
-        {
-            Id = id;
-        }
-    }
-
-    public class ItemAddedToShoppingCart : Event
-    {
-        public ItemAddedToShoppingCart(Guid id, string productId)
-        {
-            ProductId = productId;
-            Id = id;
-        }
-
-        public string ProductId { get; set; }
-    }
-
-    public class AddItemToShoppingCart : Command
-    {
-        public AddItemToShoppingCart(Guid id, int exptectedVersion)
-        {
-            AggregateId = id;
-            ExpectedVersion = exptectedVersion;
-        }
-
-        public string ProductId { get; set; }
-    }
-
-    public class ShoppingCartCommandHandlers : IHandles<AddItemToShoppingCart>
-    {
-        private readonly IRepository<ShoppingCart> _repository;
-
-        public ShoppingCartCommandHandlers(IRepository<ShoppingCart> repository)
-        {
-            _repository = repository;
-        }
-
-        public void Handle(AddItemToShoppingCart message)
-        {
-            var cart = _repository.Get(message.AggregateId);
-            cart.AddItem(message.ProductId);
-            _repository.Save(cart,message.ExpectedVersion);
-        }
-    }
-
-    public class ShoppingCart : AggregateRoot
-    {
-        private int _count;
-
-        private void Apply(ShoppingCartCreated @event)
-        {
-            Id = @event.Id;
-        }
-
-        private void Apply(ItemAddedToShoppingCart @event)
-        {
-            _count++;
-            
-        }
-
-        public void AddItem(string productId)
-        {
-            ApplyChange(new ItemAddedToShoppingCart(Id,productId));
-            if (_count == 2)
-            {
-                ApplyChange(new FreeShippingApplied(Id));
-            }
         }
     }
 }

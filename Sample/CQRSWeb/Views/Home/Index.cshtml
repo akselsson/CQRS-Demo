@@ -2,11 +2,20 @@
 @{
     ViewBag.Title = "Home Page";
 }
+<div class="shopping-cart">
+@{Html.RenderAction("Index","ShoppingCart");}
+</div>
 
-<h2>All items:</h2>
+<h2>Alla produkter:</h2>
 <ul>@foreach (var inventoryItemListDto in Model)
-    {<li>
-        @Html.ActionLink("Name: " + inventoryItemListDto.Name, "Details", new { Id = inventoryItemListDto.Id })
+    {<li class="product">
+        @using(@Html.BeginForm("Add","ShoppingCart"))
+        {
+            @Html.ActionLink(inventoryItemListDto.Name, "Details", new { Id = inventoryItemListDto.Id })
+            @Html.Hidden("productId", inventoryItemListDto.Id);
+            <input type="submit" value="Köp"/>
+        }
     </li>
-}</ul>
-@Html.ActionLink("Add","Add")
+    }</ul>
+@Html.ActionLink("Lägg till produkt","Add")
+@Html.ActionLink("Testdata","Testdata")

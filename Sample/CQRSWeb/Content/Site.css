@@ -315,3 +315,14 @@ div#title {
 .tri-state {
     width: 6em;
 }
+
+
+.shopping-cart {
+    float: right;
+    color: black;
+    border: solid 1px #ccc;
+    width: 300px;
+    padding: 7px;
+}
+
+

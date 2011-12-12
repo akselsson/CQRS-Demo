@@ -89,5 +89,17 @@ namespace CQRSWeb.Controllers
             _commandSender.Send(new RemoveItemsFromInventory(id, number, version));
             return RedirectToAction("Index");
         }
+
+        public ActionResult Testdata()
+        {
+            _commandSender.Send(new CreateInventoryItem(Guid.NewGuid(), "Kindle")); 
+            _commandSender.Send(new CreateInventoryItem(Guid.NewGuid(), "Kindle Fire")); 
+            _commandSender.Send(new CreateInventoryItem(Guid.NewGuid(), "Kindle Touch")); 
+            _commandSender.Send(new CreateInventoryItem(Guid.NewGuid(), "Kindle 4")); 
+            _commandSender.Send(new CreateInventoryItem(Guid.NewGuid(), "Nook")); 
+            _commandSender.Send(new CreateInventoryItem(Guid.NewGuid(), "Nook Color"));
+            return RedirectToAction("Index");
+
+        }
     }
 }
