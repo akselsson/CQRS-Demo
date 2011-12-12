@@ -1,7 +1,8 @@
 using System;
+using CQRSTests;
 using CQRSlite.Domain;
 
-namespace CQRSTests
+namespace CQRSCode.Domain
 {
     public class ShoppingCart : AggregateRoot
     {

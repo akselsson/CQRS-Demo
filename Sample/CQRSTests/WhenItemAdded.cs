@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using CQRSCode.CommandHandlers;
 using CQRSCode.Commands;
+using CQRSCode.Domain;
 using CQRSlite.Eventing;
 using CQRSlite.Extensions.TestHelpers;
 using NUnit.Framework;

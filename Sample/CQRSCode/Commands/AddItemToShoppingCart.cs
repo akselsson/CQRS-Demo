@@ -1,7 +1,7 @@
 using System;
 using CQRSlite.Commanding;
 
-namespace CQRSTests
+namespace CQRSCode.Commands
 {
     public class AddItemToShoppingCart : Command
     {

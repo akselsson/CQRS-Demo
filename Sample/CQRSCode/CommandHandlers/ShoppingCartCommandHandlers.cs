@@ -1,4 +1,5 @@
 using CQRSCode.Commands;
+using CQRSCode.Domain;
 using CQRSTests;
 using CQRSlite;
 using CQRSlite.Domain;
