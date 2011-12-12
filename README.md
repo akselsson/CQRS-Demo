@@ -1,4 +1,5 @@
-#CQRSlite 
+#CQRS Demo
+CQRS Demo project, derived from CQRS Lite https://github.com/gautema/CQRSlite
 ## The framework
 
 CQRSlite is a small CQRS and Eventsourcing Framework. It is written in C# and targets .NET 4.0. CQRSlite originated as a CQRS sample project Greg Young and I did in the autumn of 2010.
