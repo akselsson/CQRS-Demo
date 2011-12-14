@@ -1,8 +1,10 @@
 ﻿@using CQRSCode.ReadModel
+@using CQRSCode.ReadModel.Dtos
 @model ShoppingCartDTO
 Varukorg: @Model.Items artiklar
 
-@if (Model.FreeShipping)
+@*@if (Model.FreeShipping)
 {
     <p>Gratis frakt!</p>
 }
+*@

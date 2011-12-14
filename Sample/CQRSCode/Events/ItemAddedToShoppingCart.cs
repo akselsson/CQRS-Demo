@@ -1,7 +1,7 @@
 using System;
 using CQRSlite.Eventing;
 
-namespace CQRSTests
+namespace CQRSCode.Events
 {
     public class ItemAddedToShoppingCart : Event
     {

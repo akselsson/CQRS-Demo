@@ -70,6 +70,7 @@
     <Compile Include="ReadModel\Handlers\ShoppingCartView.cs" />
     <Compile Include="ReadModel\IReadModelFacade.cs" />
     <Compile Include="ReadModel\ReadModelFacade.cs" />
+    <Compile Include="ReadModel\Dtos\ShoppingCartDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Framework\CQRSlite\CQRSlite.csproj">

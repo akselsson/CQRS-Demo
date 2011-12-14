@@ -1,4 +1,6 @@
+using CQRSCode.Events;
 using CQRSCode.Infrastructure;
+using CQRSCode.ReadModel.Dtos;
 using CQRSTests;
 using CQRSlite;
 
@@ -7,7 +9,7 @@ namespace CQRSCode.ReadModel.Handlers
     public class ShoppingCartView : 
         IHandles<ShoppingCartCreated>,
         IHandles<ItemAddedToShoppingCart>,
-        IHandles<FreeShippingApplied>
+        IHandles<FreeShipping>
     {
         public void Handle(ShoppingCartCreated message)
         {
@@ -19,10 +21,10 @@ namespace CQRSCode.ReadModel.Handlers
             InMemoryDatabase.ShoppingCart[message.Id].Items++;
         }
 
-        public void Handle(FreeShippingApplied message)
+        public void Handle(FreeShipping message)
         {
 
-            InMemoryDatabase.ShoppingCart[message.Id].FreeShipping = true;
+            //InMemoryDatabase.ShoppingCart[message.Id].FreeShipping = true;
         }
     }
 }

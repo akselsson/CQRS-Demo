@@ -10,10 +10,4 @@ namespace CQRSCode.ReadModel
         InventoryItemDetailsDto GetInventoryItemDetails(Guid id);
         ShoppingCartDTO GetShoppingCart(Guid id);
     }
-
-    public class ShoppingCartDTO
-    {
-        public int Items;
-        public bool FreeShipping;
-    }
 }

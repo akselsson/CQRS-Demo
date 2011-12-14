@@ -46,7 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WhenItemAdded.cs" />
+    <Compile Include="ShoppingCart\WhenFirstItemAdded.cs" />
+    <Compile Include="ShoppingCart\WhenSecondItemAdded.cs" />
     <Compile Include="WhenItemCheckedIn.cs" />
   </ItemGroup>
   <ItemGroup>

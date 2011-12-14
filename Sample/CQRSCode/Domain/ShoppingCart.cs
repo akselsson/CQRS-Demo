@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using CQRSCode.Events;
 using CQRSTests;
 using CQRSlite.Domain;
 
@@ -6,7 +8,7 @@ namespace CQRSCode.Domain
 {
     public class ShoppingCart : AggregateRoot
     {
-        private int _count;
+        readonly List<string> _contents = new List<string>();
 
         public ShoppingCart(Guid aggregateId)
         {
@@ -24,17 +26,12 @@ namespace CQRSCode.Domain
 
         private void Apply(ItemAddedToShoppingCart @event)
         {
-            _count++;
-            
+           _contents.Add(@event.ProductId);
         }
 
         public void AddItem(string productId)
         {
             ApplyChange(new ItemAddedToShoppingCart(Id,productId));
-            if (_count == 2)
-            {
-                ApplyChange(new FreeShippingApplied(Id));
-            }
         }
     }
 }

@@ -12,7 +12,7 @@ namespace CQRSWeb.Controllers
         private readonly ICommandSender _commandSender;
         private readonly IReadModelFacade _readModel;
 
-        public ShoppingCartController(ICommandSender commandSender,IReadModelFacade readModel)
+        public ShoppingCartController(ICommandSender commandSender, IReadModelFacade readModel)
         {
             _commandSender = commandSender;
             _readModel = readModel;
@@ -20,7 +20,7 @@ namespace CQRSWeb.Controllers
 
         public ActionResult Index()
         {
-            Guid? cartId = (Guid?)Session["CartId"];
+            Guid? cartId = CurrentCart;
             if (cartId == null)
             {
                 return PartialView("Empty");
@@ -32,15 +32,27 @@ namespace CQRSWeb.Controllers
         [HttpPost]
         public ActionResult Add(Guid productId)
         {
-            Guid? cartId = (Guid?)Session["CartId"];
-            if(cartId == null)
+            Guid? cartId = CurrentCart;
+            if (cartId == null)
             {
                 cartId = Guid.NewGuid();
-                _commandSender.Send(new CreateShoppingCart(cartId.Value,-1));
-                Session["CartId"] = cartId;
+                _commandSender.Send(new CreateShoppingCart(cartId.Value));
+                CurrentCart = cartId;
             }
-            _commandSender.Send(new AddItemToShoppingCart(cartId.Value,-1));
+            _commandSender.Send(new AddItemToShoppingCart(cartId.Value));
             return RedirectToAction("Index", "Home");
+        }
+
+        private Guid? CurrentCart
+        {
+            get
+            {
+                return (Guid?)Session["CartId"];
+            }
+            set
+            {
+                Session["CartId"] = value;
+            }
         }
     }
 }

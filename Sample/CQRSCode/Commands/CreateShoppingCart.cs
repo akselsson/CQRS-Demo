@@ -5,10 +5,10 @@ namespace CQRSCode.Commands
 {
     public class CreateShoppingCart : Command
     {
-        public CreateShoppingCart(Guid id, int expectedVersion)
+        public CreateShoppingCart(Guid id)
         {
             AggregateId = id;
-            ExpectedVersion = expectedVersion;
+            ExpectedVersion = -1;
         }
     }
 }
