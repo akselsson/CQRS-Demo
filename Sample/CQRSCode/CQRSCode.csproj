@@ -56,7 +56,6 @@
     <Compile Include="Events\InventoryItemCreated.cs" />
     <Compile Include="Events\InventoryItemDeactivated.cs" />
     <Compile Include="Events\InventoryItemRenamed.cs" />
-    <Compile Include="Events\ItemAddedToShoppingCart.cs" />
     <Compile Include="Events\ItemsCheckedInToInventory.cs" />
     <Compile Include="Events\ItemsRemovedFromInventory.cs" />
     <Compile Include="Events\ShoppingCartCreated.cs" />

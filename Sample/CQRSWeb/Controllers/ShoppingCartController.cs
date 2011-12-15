@@ -20,17 +20,20 @@ namespace CQRSWeb.Controllers
 
         public ActionResult Index()
         {
-            Guid? cartId = CurrentCart;
-            if (cartId == null)
-            {
-                return PartialView("Empty");
-            }
-            ViewData.Model = _readModel.GetShoppingCart(cartId.Value);
+            CreateCart();
+            ViewData.Model = _readModel.GetShoppingCart(CurrentCart.Value);
             return PartialView();
         }
 
         [HttpPost]
         public ActionResult Add(Guid productId)
+        {
+            
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        private void CreateCart()
         {
             Guid? cartId = CurrentCart;
             if (cartId == null)
@@ -39,8 +42,6 @@ namespace CQRSWeb.Controllers
                 _commandSender.Send(new CreateShoppingCart(cartId.Value));
                 CurrentCart = cartId;
             }
-            _commandSender.Send(new AddItemToShoppingCart(cartId.Value,productId));
-            return RedirectToAction("Index", "Home");
         }
 
         private Guid? CurrentCart
