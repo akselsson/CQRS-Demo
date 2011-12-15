@@ -8,7 +8,7 @@ namespace CQRSCode.Domain
 {
     public class ShoppingCart : AggregateRoot
     {
-        readonly List<string> _contents = new List<string>();
+        readonly List<Guid> _contents = new List<Guid>();
 
         public ShoppingCart(Guid aggregateId)
         {
@@ -29,7 +29,7 @@ namespace CQRSCode.Domain
            _contents.Add(@event.ProductId);
         }
 
-        public void AddItem(string productId)
+        public void AddItem(Guid productId)
         {
             ApplyChange(new ItemAddedToShoppingCart(Id,productId));
         }

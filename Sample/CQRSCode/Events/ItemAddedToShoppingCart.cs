@@ -5,12 +5,12 @@ namespace CQRSCode.Events
 {
     public class ItemAddedToShoppingCart : Event
     {
-        public ItemAddedToShoppingCart(Guid id, string productId)
+        public ItemAddedToShoppingCart(Guid id, Guid productId)
         {
             ProductId = productId;
             Id = id;
         }
 
-        public string ProductId { get; set; }
+        public Guid ProductId { get; set; }
     }
 }

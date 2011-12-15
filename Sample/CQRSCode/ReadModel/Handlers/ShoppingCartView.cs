@@ -8,8 +8,7 @@ namespace CQRSCode.ReadModel.Handlers
 {
     public class ShoppingCartView : 
         IHandles<ShoppingCartCreated>,
-        IHandles<ItemAddedToShoppingCart>,
-        IHandles<FreeShipping>
+        IHandles<ItemAddedToShoppingCart>
     {
         public void Handle(ShoppingCartCreated message)
         {
@@ -19,12 +18,6 @@ namespace CQRSCode.ReadModel.Handlers
         public void Handle(ItemAddedToShoppingCart message)
         {
             InMemoryDatabase.ShoppingCart[message.Id].Items++;
-        }
-
-        public void Handle(FreeShipping message)
-        {
-
-            //InMemoryDatabase.ShoppingCart[message.Id].FreeShipping = true;
         }
     }
 }

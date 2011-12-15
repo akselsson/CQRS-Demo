@@ -21,7 +21,7 @@ namespace CQRSTests
 
         protected override AddItemToShoppingCart When()
         {
-            return new AddItemToShoppingCart(_guid);
+            return new AddItemToShoppingCart(_guid,Guid.NewGuid());
         }
 
         protected override ShoppingCartCommandHandlers BuildHandler()

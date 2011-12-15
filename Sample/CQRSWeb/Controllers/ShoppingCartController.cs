@@ -39,7 +39,7 @@ namespace CQRSWeb.Controllers
                 _commandSender.Send(new CreateShoppingCart(cartId.Value));
                 CurrentCart = cartId;
             }
-            _commandSender.Send(new AddItemToShoppingCart(cartId.Value));
+            _commandSender.Send(new AddItemToShoppingCart(cartId.Value,productId));
             return RedirectToAction("Index", "Home");
         }
 

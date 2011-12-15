@@ -19,12 +19,12 @@ namespace CQRSTests
         protected override IEnumerable<Event> Given()
         {
             _guid = Guid.NewGuid();
-            return new Event[] { new ShoppingCartCreated(_guid) { Version = 1 }, new ItemAddedToShoppingCart(_guid, "product 1") { Version = 2 } };
+            return new Event[] { new ShoppingCartCreated(_guid) { Version = 1 }, new ItemAddedToShoppingCart(_guid, Guid.NewGuid()) { Version = 2 } };
         }
 
         protected override AddItemToShoppingCart When()
         {
-            return new AddItemToShoppingCart(_guid);
+            return new AddItemToShoppingCart(_guid,Guid.NewGuid());
         }
 
         protected override ShoppingCartCommandHandlers BuildHandler()
